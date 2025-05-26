@@ -2,7 +2,9 @@
 #include <stdlib.h>
 
 int *allocated_array(int num);
-void sort(int *arr, int num);
+void swap(int *a, int *b);
+int partition(int *arr, int low, int high);
+void sort(int *arr, int low, int high);
 int recursive_search(int *arr, int low, int high, int target);
 
 int main()
