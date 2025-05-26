@@ -56,6 +56,13 @@ int *allocated_array(int num)
     return arr;
 }
 
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 void sort(int *arr, int num)
 {
     for (int i = 1; i < num; i++) {
