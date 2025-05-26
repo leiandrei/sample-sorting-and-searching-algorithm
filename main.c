@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+// Updated Sort: Quick Sort
 int *allocated_array(int num);
 void swap(int *a, int *b);
 int partition(int *arr, int low, int high);
@@ -26,7 +26,7 @@ int main()
         scanf("%d", &arr[i]);
     }
 
-    sort(arr, num);
+    sort(arr, 0, num - 1);
 
     printf("\n=== Search for an Element ===\n");
     printf("Try to search for an element: ");
@@ -78,18 +78,11 @@ int partition(int *arr, int low, int high) // partitioning
     return i + 1;
 }
 
-void sort(int *arr, int num)
+void sort(int *arr, int low, int high) // main recursive function
 {
-    for (int i = 1; i < num; i++) {
-        int curr = arr[i];
-        int j = i - 1;
-
-        while (j >= 0 && arr[j] > curr) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = curr;
-    }
+    int partitioning_idx = partition(arr, low, high);
+    sort(arr, low, partitioning_idx - 1);
+    sort(arr, partitioning_idx + 1, high);
 }
 
 int recursive_search(int *arr, int low, int high, int target)
